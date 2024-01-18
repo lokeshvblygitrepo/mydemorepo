@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block project_select %}
+
+    <form method="get" id="projects" data-projects-url="{% url 'ajax_load_projects' %}" novalidate>
+        <p>Please select a project to see all the available automated tests:</p>
+        {% csrf_token %}
+        {{form}}
+        {% block search_button %}{% endblock %}
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $("#id_category").change(function () {
+          var url = $("#projects").attr("data-projects-url");
+          var categoryId = $(this).val();
+
+          $.ajax({
+            url: url,
+            data: {
+              'category': categoryId
+            },
+            success: function (data) {
+              $("#id_project").html(data);
+            }
+          });
+        });
+
+    </script>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

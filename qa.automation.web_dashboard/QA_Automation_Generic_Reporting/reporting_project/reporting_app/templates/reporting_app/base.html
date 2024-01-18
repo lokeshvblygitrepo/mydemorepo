@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% load activeurl %}
+
+<head>
+  <meta charset="UTF-8">
+  <title>QA Automation Dashboard</title>
+  <style>
+
+  h1 {
+    background-color: white;
+    color: #43B02A;
+    text-align: center
+  }
+
+  .header_menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #43B02A;
+  }
+
+    ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #43B02A;
+  }
+
+
+  li {
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+.active, li:hover {
+  background-color: green;
+  color: white;
+}
+
+
+
+
+  </style>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+    <h1 style="color: #43B02A;">QA Automation Dashboard</h1>
+
+<!--    <ul id="menu">-->
+<!--        <li class="tab"><a href="home">Home</a></li>-->
+<!--        <li class="tab"><a href="codeinventory">Code Inventory</a></li>-->
+<!--        <li class="tab"><a href="codedevelopment">Code Development</a></li>-->
+<!--        <li class="tab"><a href="executionhistory">Execution History</a></li>-->
+<!--    </ul>-->
+
+    {% activeurl %}
+        <ul>
+            <li> <!-- this <li> will render as <li class="active"> -->
+                <a href="/home">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="/codeinventory">
+                    Code Inventory
+                </a>
+            </li>
+            <li>
+                <a href="/codedevelopment">
+                    Code Development
+                </a>
+            </li>
+            <li>
+                <a href="/executionhistory">
+                    Execution History
+                </a>
+            </li>
+        </ul>
+    {% endactiveurl %}
+
+
+
+
+  <div id="project_select" style="margin:10px;">
+    {% block project_select %}{% endblock %}
+  </div>
+
+  <div id="content" style="margin:10px;">
+      <br>
+    {% block content %}{% endblock %}
+  </div>
+
+
+{% block js %}
+
+{% endblock js %}
+
+
+</body>
+</html>
